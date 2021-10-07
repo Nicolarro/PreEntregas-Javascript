@@ -1,6 +1,8 @@
 *{
     font-family: 'Times New Roman', Times, serif;
     color: darkkhaki;
-    background-color: aqua;
+}
 
+body{
+    background-color: aqua;
 }
