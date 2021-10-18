@@ -4,22 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet"/>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./scss/stiles.css">
+    <link rel="stylesheet" href="../scss/stiles.css">
 
-    <title>REINA COCINA - Productos</title>
+    <title>Document</title>
 </head>
 <body>
     
 
-
     <nav class="navbar navbar-expand-lg navbar-light header--color">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="../index.html">
           <img src="" width="70" height="70" alt="" class="header--color header__logo img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,11 +24,11 @@
         <div class="collapse navbar-collapse header--color" id="navbarScroll">
           <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll header--color" style="max-height: 100px;">
             <li class="nav-item">
-              <a class="nav-link header--color" href="index.html" >HOME</a>
+              <a class="nav-link header--color" href="../index.html" >HOME</a>
             </li>
             <li class="nav-item">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle header--color" href="./sections/categoria.html" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle header--color" href="categoria.html" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                  PRODUCTOS
                 </a>
                 <ul class="dropdown-menu header--color" aria-labelledby="navbarScrollingDropdown">
@@ -43,7 +39,7 @@
               </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link header--color" href="./sections/contacto.html" >CONTACTO</a>
+              <a class="nav-link header--color" href="contacto.html" >CONTACTO</a>
             </li>
         </ul>
           <form class="d-flex">
@@ -53,36 +49,53 @@
         </div>
       </nav>
 
-      <h1>Inicio</h1>
+      
 
-      <form action="" method="post">
-        <label for="nombre">Ingrese el nombre del Producto</label>
-        <input type="text" id="categoria" placeholder="Ingresar la categoria">
-    
-        <br>
-        <br>
-        <br>
-    
-        <label for="tipo">Ingrese el tipo de producto a comprar</label>
-        <input type="text" id="tipo" placeholder="Ingrese un producto" >
-    
-        <br>
-        <br>
-              
-        <button type="submit" value="Save" id="save"> Enviar </button>
-    
-    
-    </form>
+      <section class="container-fluid">
+        <div class="row contacto">
+            <div class=" col-md-3">
+              <div class="form-group mb-3">
+                <label for="FormControlInput1" class="form-label">Nombre</label>
+                <input type="text" class="form-control form--color" id="nombre">
+            </div>
+            <div class="form-group mb-3">
+              <label for="FormControlInput2" class="form-label">Apellido</label>
+              <input type="text" class="form-control form--color" id="apellido">
+            </div>
+  
+                <div class="form-group mb-3">
+                    <label for="FormControlInput3" class="form-label">Email</label>
+                    <input type="email" class="form-control form--color" id="email"
+                        placeholder="name@example.com">
+                </div>
+                <div class="form-group col-mb-3">
+                  <label for="tipoEvento">Tipo de Evento</label>
+                  <select id="tipoEvento" class="form-control form--color">
+                    <option selected>Elegir Tipo</option>
+                    <option>Familiar</option>
+                    <option>Corporativo</option>
+                  </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="FormControlTextarea1" class="form-label">Comentarios</label>
+                    <textarea class="form-control form--color" id="comentarios" rows="3"></textarea>
+                </div>
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" value="" id="check">
+                  <label class="form-check-label" for="defaultCheck1">
+                  Acepta Terminos y Condiciones?
+                  </label>
+                </div>
+  
+              <button type="submit" class="btn mb-3">Enviar</button>
+        </div>
 
 
 
-    <div id="productos"></div>
 
 
 
-<script src="./assets/JS/app.js"></script>
+<script src="../assets/JS/contacto.js"></script>
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </body>
 </html>
