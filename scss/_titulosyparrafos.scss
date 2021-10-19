@@ -1,0 +1,233 @@
+
+/* OPERADORES*/
+$color1: #CCD5AE;
+$color2:#6b705c;
+$color3:#d5d5d5;
+
+$padding:1rem;
+$margin: 1rem;
+
+
+
+@mixin sizes ($width, $height) {
+  height: $height;
+  width: $width;
+}
+
+/* ESTILOS */
+          div{
+            .mainTitle{
+              font-size: 4rem;
+              text-align: center;
+              margin-bottom: 3rem;
+              margin-top: 3rem;
+              opacity: 1;
+              background: transparent;
+              display: block;
+            }
+            .mainTitle__parrafos {
+              text-align: center;
+              display: block;
+              font-size: 2rem;
+              color: #041527;
+              font-weight: 300;
+              letter-spacing: 0.5px;
+              line-height: 3rem;
+              margin-block-start: 10px;
+              margin-block-end: 10px;
+              margin-inline-start: 0px;
+              margin-inline-end: 0px;
+              margin: ($margin * 2);
+            }
+          }
+            
+
+
+/* SECCION CON BEM*/
+  .portada{
+    display: flex;
+    @include sizes(100%,400px);
+    background-image: url(../images/cover.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+      .portada__insignia{
+          font-family: "Pinyon Script", "cursive";
+          font-size: 7rem;
+          color: #c59d5f;
+          background-color: transparent;
+          line-height: 26px;
+          font-weight: 400;
+          text-transform: capitalize;
+          text-align: center;
+          opacity: 2;
+          display: block;
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+          animation-duration: 4s;
+          animation-name: aparecer;
+        }
+      }
+
+
+      @keyframes aparecer {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
+      h1 {
+        text-align: center;
+        font-size: 4rem;
+        align-items: center;
+        opacity: 1;
+        margin: 1.5rem;
+      }
+
+
+      h2 {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-size: 3rem;
+        text-align: center;
+        opacity: 1
+      }
+
+      h3 {
+        text-align: center;
+        font-size: 3rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+      
+      h4{
+        text-align: left;
+        margin-left: 3rem;
+      }
+
+      .h5{
+        font-size: 1.5rem;
+        opacity: 2;
+        font-weight: 400;
+      }
+
+
+div{
+    .h3{
+      text-align: center;
+      font-size: 3rem;
+    }
+    .cursiva{
+      font-size: 3.2rem;
+      line-height: 3.2rem;
+      letter-spacing: 0.5px;
+      font-weight: 900;
+      color: #041527;
+      font-style: italic;
+      text-transform: capitalize;
+      opacity: 1;
+    }
+    }
+
+    /* ESTILO PREGUTNAS FRECUENTES */
+    dl{
+      dt{
+        color: #6b705c;
+        font-size: 2rem;
+        margin-left: 1rem;
+      }
+      dd{
+        margin-left: 1rem;
+      }
+    }
+
+    
+  .contenedor_video {
+    position: relative;
+    padding-bottom: 56.25%; /*panorámico*/
+    padding-top: 25px;
+    height: 0;
+
+  .contenedor_video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  }
+
+    .fondoProductos{
+      display: flex;
+      flex-direction: column;
+      @include sizes(100%,400px);
+      background-image: url(../images/fondoProductos.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      justify-content: center;
+      align-items: center;
+        .fondoProductos_texto{
+            font-family: "Pinyon Script",;
+            font-size: 5rem;
+             color: #c59d5f;
+            background-color: transparent;
+            line-height: 26px;
+            font-weight: 300;
+            text-transform: capitalize;
+            text-align: center;
+            opacity: 10;
+            display: block;
+            margin-top: 2rem;
+            margin-bottom: 14rem;
+          }
+          .btnProducto{
+            color: #212529;
+            background-color: #c59d5f ;
+            border-color: #c59d5f ;
+            font-size: 2rem;
+            justify-content: center;
+
+          }
+        }
+
+
+
+.fotoBocado{
+  @include sizes (400px,300px) 
+  }
+.fotoTarta{
+  @include sizes (400px,300px)
+}
+.fotoTorta{
+  @include sizes (400px,300px)
+}
+.fotoShot{
+  @include sizes (400px,300px)
+}
+
+
+    .listaProductos {
+      list-style-type: disc;
+      list-style: inside;
+      font-size: 2rem;
+    }
+
+    .listaProductos{text-align: 1px;}
+
+    ul.animado{
+      animation-duration: 4s;
+      animation-name: aparece;
+    }
+    @keyframes aparece{
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+   
+    }

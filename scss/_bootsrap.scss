@@ -1,0 +1,45 @@
+
+          /* SECCION CON MIXIN */
+
+          /* VARIABLES */
+          $color1: #CCD5AE;
+          $color2:#6b705c;
+          $color3:#d5d5d5;
+
+          /* MIXIN */
+
+      @mixin sizes ($width, $height) {
+        height: $height;
+        width: $width;
+     
+      }
+
+          .carousel{
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            .carousel--Tamano{
+              @include sizes (100%,450px)
+            }
+          }
+          
+
+        /* ESTILO SOBRE FORM - BOTON BOOSTRAP */
+.btnFormulario{
+    background-color: $color1;
+  }
+
+  .btnCards{
+    align-items: center;
+    border-color:#c59d5f ;
+    background-color:#c59d5f  ;
+
+  }
+  
+  /* ------------ESTILOS CONTACTO------------------------------------- */
+  .form--color {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-color: $color3;
+    border-width: thin;
+  }
+  

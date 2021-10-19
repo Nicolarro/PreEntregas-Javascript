@@ -56,14 +56,31 @@ class Producto {
     /*------------------------------------------------- SIMULADOR ------------------------------------------------------------------------- *//* -----CALCULAR EL COSTO TOTAL DE LOS PRODUCTOS SELECCIONADOS (PRECIO POR CANTIDAD DEL PRODUCTO), Y MOSTRARLO AL USUARIO--------- */
     
 
+         /* FUNCION QUE GUARDA LOS DATOS INGRESADOS POR EL USUARIO */
+
+         const guardarDato = () =>{
+
+            let nombre_producto = document.getElementById("nombre").value
+            
+            let tipo_productos = document.getElementById("tipo").value
+        
+            const boton = document.getElementById("save")
+            }
+    
+            document.getElementById("save").addEventListener("click", (e) => {
+                e.preventDefault(), guardarDato()})
+            
+        
+            console.log(guardarDato());
+
+
     /* USUARIO FILTRA POR LOS PRODUCTOS A COMPRAR  */
 
       /* SE TOMA LOS DATOS BRINDADOS POR EN EL INPUT, Y SE CREA ARRAY DE LOS PRODUCTOS FILTRADOS "LISTADO PRODUCTOS" */
 
-  
     let listadoProducto = [];
     
-    function filtrar_productos(){
+    function lista_filtrada(){
 
     if (listadoProducto != "") {
         listadoProducto = []
@@ -71,6 +88,7 @@ class Producto {
 
     else{
 
+    listadoProducto = ""
     let nombre_producto = document.getElementById("nombre").value
 
     let tipo_productos = document.getElementById("tipo").value
@@ -82,29 +100,50 @@ class Producto {
         /* A SU VEZ GUARDA LOS PRODUCTOS ELEGIDOS EN ARRAY LISTADO PRODUCTOS*/
 
      listadoProducto.push(...eleccion);
+     console.log(eleccion)
+
     }
-    
+}
+ 
     console.log(listadoProducto)
 
-    filtrar_productos();
+    lista_filtrada();
+
+
+
+    const listado = lista_filtrada();
+    
+    console.log(listado);
 
     /* QUE SE IMPRIMAN EN EL MISMO INDEX. HTML LOS PRODUCTOS FILTRADOS POR EL USUARIO */
 
-    for(productos of listadoProducto){
-        let caja = document.createElement("div")
-   
-      caja.innerHTML = `<h3>Nombre: ${productos.nombre}</h3>
-                       <h3>Cantidad Comprada: ${cantidad_productos} </h3> `
-                       
-       document.body.appendChild(caja);
-   }
-    return listadoProducto;
-     
+    let contenedorIndex = document.getElementById("produtosFiltrado")
+
+    function filtrar_productos(){
+    listadoProducto.forEach(listadoProducto => {
+        contenedorProductos.innerHTML += 
+            `<div class="container-fluid">
+              <div class="row containerFlex">
+                <div class="col-sm-4">
+                  <div class="card containerflex--estilocaja">
+                    <img src="${listadoProducto.image}" alt="" width="px" height="px">
+                    <div class="card-body">
+                      <h5 class="card-title">"Nombre: "${listadoProducto.nombre}</h5>
+                      <p>"Precio: " ${listadoProducto.precio}</p>
+                      <p class="card-text">Armamos todo tipo de bocados para las mejores entradas</p>
+                      <a href="#" class="btn btn-primary btnCards" onclick= comprarProducto()> COMPRAR</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>`  
+              
+        })
+
+        filtrado = contenedorIndex.innerHTML
+        document.body.appendChild(contenedorIndex);
     }
 
-    const listado = listado_productos();
-    
-    console.log(listado);
 
 /* ----------------------------------------------------------------------- *
 
@@ -120,35 +159,18 @@ class Producto {
         return suma;
         }
         
+        let total = monto()
         /* SE IMPRIME CON UN INNER HTML EL MONTO TOTAL DE LA OPERACION */
 
         function muestraCosto() {
     
             let contenedor = document.createElement("div")
 
-            contenedor.innerHTML = `<h4> Costo Total: ${monto}</h4>`;
+            contenedor.innerHTML = `<h4> Costo Total: ${total}</h4>`;
             document.body.appendChild(contenedor)
         }
 
         console.log(muestraCosto());
         muestraCosto();
 
-    /* QUE GUARDE LOS DATOS  */
-
-    const guardarDato = () =>{
-
-        nombre_producto = document.getElementById("nombre").value
-        
-        tipo_productos = document.getElementById("tipo").value
-    
-        const boton = document.getElementById("save")
-   
-        }
-        
-        document.getElementById("save").addEventListener("click", (e) => {
-            e.preventDefault(), guardarDato()})
-        
-    
-        console.log(guardarDato());
-    
-        
+ 

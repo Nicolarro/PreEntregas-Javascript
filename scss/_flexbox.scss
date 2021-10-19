@@ -1,0 +1,166 @@
+
+  
+        /* SECCION CON CONDICIONAL */
+        /* SECCION CON OPERADORES */  
+
+                /* VARIALBES*/
+          $color1: #CCD5AE;
+          $color2:#6b705c;
+          $color3:#d5d5d5;
+
+          $padding:1rem;
+          $margin: 1rem;
+
+          @mixin sizes ($width, $height) {
+            height: $height;
+            width: $width;
+          }
+
+          .flex{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+          }
+
+          /* ESTILOS FLEXBOX  */
+          .section3{
+            .section3__padreMain1 {
+              @extend .flex;
+              justify-content: center;
+              background-color: #E9EDC9;
+
+                .section3__hijoMain1 {
+                  @extend .flex;
+                  flex-shrink: 0;
+                  background-color: #E9EDC9;
+              }
+                .section3--fotoJunta2 {
+                  @extend .flex;
+                  flex-wrap: wrap;
+                  @include sizes(400px,300px)
+                }
+                .section3--fotoJunta {
+                  @extend .flex;
+                  flex-wrap: wrap;
+                  @include sizes(400px,300px);
+                }
+                .section3__hijoMain2{ 
+                  @extend .flex;
+
+                  @if $padding==1rem{
+                    padding: 1rem;
+                  }
+                  @if $padding >1rem{
+                    padding: 2rem;}
+                  @else {padding:0.5rem};
+                 
+                  margin: ($margin * 1.5);
+                  flex-wrap: wrap;
+                  background-color: #E9EDC9;
+                  border-style: solid;
+                  border-width: thin;
+                  border-color: $color3;
+               
+                .section3--estilotextoYfoto{
+                  font-weight: 500;
+                  font-size: 2.2rem;
+                  padding: ($padding * 2); //SECION CON OPERADOR//
+                }
+                .section3__parrafos{
+                  text-align: center;
+                  display: block;
+                  font-size: 2rem;
+                  color: #041527;
+                  font-weight: 300;
+                  letter-spacing: 0.5px;
+                  line-height: 3rem;
+                  margin-block-start: 10px;
+                  margin-block-end: 10px;
+                  margin-inline-start: 0px;
+                  margin-inline-end: 0px;
+                  margin: ($margin * 2); //SECCION CON OPERADOR//
+                }
+              }
+              }
+            }
+          
+          
+
+              /* SECCION CON BEM*/
+              
+    .containerFlex{
+      @extend .flex;
+        margin: 2rem;
+        align-items: center;
+          .containerflex--estilocaja{
+            border-style: solid;
+            border-width: thin;
+            border-color: #c59d5f;
+            .containerflex__tituloBox{
+              font-weight: bold;
+              margin-top: 2rem;
+              font-size: 2rem;
+              text-align: center;
+              opacity: 1;
+              }
+            } 
+            .containerflex--estilocaja :hover{
+              color: #c59d5f;
+            }
+      
+        }
+  
+  
+
+
+        /* FLEX SOBRE SECTION EN SERVICIOS  */
+
+.padreServicios {
+  @extend .flex;
+    background-color: #E9EDC9;
+    margin-bottom: 1rem;
+  }
+  .hijoServicios {
+    @extend .flex;
+    padding: ($padding * 3);
+    flex-wrap: wrap;
+    padding: 0rem;
+    background-color: #E9EDC9;
+            .hijoServicios__foto {
+              @extend .flex;
+              flex-wrap: wrap;
+              @include sizes(350px,300px);         
+              border-color: #DBDBD1;
+              }
+        }
+        .hijoServicios2{
+              @extend .flex;
+              margin-left: 2rem;
+              margin-right: 2rem; 
+              background-color: #E9EDC9;
+              border-style: solid;
+              border-width: thin;
+              border-color: #d5d5d5;     
+                      .section3--estilotextoYfoto{
+                        font-weight: 500;
+                        font-size: 2.2rem;
+                        padding: 2rem;
+                      }
+                      .section3__parrafos{
+                        text-align: center;
+                        display: block;
+                        font-size: 2rem;
+                        color: #041527;
+                        font-weight: 300;
+                        letter-spacing: 0.5px;
+                        line-height: 3rem;
+                        margin-block-start: 10px;
+                        margin-block-end: 10px;
+                        margin-inline-start: 0px;
+                        margin-inline-end: 0px;
+                        margin: 2rem;
+                      }
+                    }
+ 
+
+  
