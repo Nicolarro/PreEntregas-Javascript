@@ -65,11 +65,11 @@ class Producto {
             let tipo_productos = document.getElementById("tipo").value
         
             const boton = document.getElementById("save")
-            }
+            
     
             document.getElementById("save").addEventListener("click", (e) => {
                 e.preventDefault(), guardarDato()})
-            
+            }
         
             console.log(guardarDato());
 
@@ -84,14 +84,20 @@ class Producto {
 
     if (listadoProducto != "") {
         listadoProducto = []
+      let listaVacia = createElement("p");
+      listaVacia.innerHTML = "<p> La busqueda no coincide con ningun producto</p>";
+      document.body.appendChild(listaVacia)
+
     }
 
     else{
 
     listadoProducto = ""
-    let nombre_producto = document.getElementById("nombre").value
+/*     let nombre_producto = document.getElementById("nombre").value
 
-    let tipo_productos = document.getElementById("tipo").value
+    let tipo_productos = document.getElementById("tipo").value */
+
+    guardarDato()
 
     /* SE CREE UN ARRAY CON LOS PRODUCTOS FILTRADOS POR EL USUARIO */
     
