@@ -40,7 +40,5 @@ const mostrarProductos = (productosDisponibles) => {
   resultado = contenedorProductos.innerHTML
 }
 
-mostrarProductos(productosDisponibles);
-
 
 

@@ -20,6 +20,7 @@ const crearProducto = (nombre, categoria, precio, stock, imagen) => {
   const producto = new Producto(nombre, categoria, precio, stock, imagen);
 };
 
+
 /*-------------------------------------INSTANCIAS-----------------------------------------------------------------   */
 
 /* PRODUCTO */
@@ -52,6 +53,8 @@ const shots = new Producto(
   100,
   "https://i.ibb.co/nbkhCff/Shots-1.jpg"
 );
+
+
 
 /* CREA LISTA PRODUCTOS CON TODOS LOS PRODUCTOS DISPONIBLES */
 
@@ -93,14 +96,14 @@ const guardarDato = () => {
 };
 
 document.getElementById("save").addEventListener("click", (e) => {
-  guardarDato(), e.preventDefault(), filtrar_productos();
+  guardarDato(), e.preventDefault(),filtrar_productos();
 });
 
 /* USUARIO FILTRA POR LOS PRODUCTOS A COMPRAR  */
 
 /* SE TOMA LOS DATOS BRINDADOS POR EN EL INPUT, Y SE CREA ARRAY DE LOS PRODUCTOS FILTRADOS "LISTADO PRODUCTOS" */
 
-
+console.log(productos.nombre)
 
 let eleccion = [];
 
@@ -135,7 +138,7 @@ let contenedorIndex = document.getElementById("productosFiltrados");
 let listaVacia;
 
 function filtrar_productos(listado_productos) {
-  if (listadoProducto == []) {
+  if (listadoProducto == []){
     listaVacia = createElement("p");
     listaVacia.innerHTML = `<p> La busqueda no coincide con ningun producto</p>`;
     document.body.appendChild(listaVacia);
@@ -152,7 +155,7 @@ function filtrar_productos(listado_productos) {
                     <div class="card-body">
                       <h5 class="card-title">"Nombre: "${listadoProducto.nombre}</h5>
                       <p>"Precio: " ${listadoProducto.precio}</p>
-                      <p class="card-text">Armamos todo tipo de bocados para las mejores entradas</p>
+                      <p class="card-text">Armamos todo tipo de productos personalizados</p>
                       <a href="#" class="btn btn-primary btnCards" onclick= comprarProducto()> COMPRAR</a>
                     </div>
                   </div>
@@ -164,3 +167,39 @@ function filtrar_productos(listado_productos) {
 }
 
 console.log(listadoProducto)
+
+/* IMPRIME TODOS LO PRODUCTOS DISPONIBLES EN EL INDEX */
+
+let productosIndex = document.getElementById("totalProductos");
+
+let productosDisponibles = JSON.parse(localStorage.getItem("catalogo"))
+
+let result;
+const mostrarProductos = (productosIndex) => {
+
+  let resultado = "";
+  
+  productosDisponibles.forEach(productosDisponibles => {
+  productosIndex.innerHTML += 
+      `<div class="container-fluid">
+        <div class="row containerFlex">
+          <div class="col-sm-4">
+            <div class="card containerflex--estilocaja">
+              <img src="${productosDisponibles.image}" alt="" width="px" height="px">
+              <div class="card-body">
+                <h5 class="card-title">"Nombre: "${productosDisponibles.nombre}</h5>
+                <p>"Precio: " ${productosDisponibles.precio}</p>
+                <p class="card-text">Armamos todo tipo de bocados para las mejores entradas</p>
+                <a href="#" class="btn btn-primary btnCards" onclick= comprarProducto()> COMPRAR</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>`  
+        
+  })
+
+  resultado = productosIndex.innerHTML
+}
+
+mostrarProductos(productosIndex);
