@@ -5,7 +5,6 @@
 let productosDisponibles = JSON.parse(localStorage.getItem("catalogo"))
 
 
-
 let contenedorProductos = document.getElementById("productos");
 
 
@@ -39,8 +38,6 @@ const mostrarProductos = (productosDisponibles) => {
 
 
   resultado = contenedorProductos.innerHTML
-  console.log(resultado)
-  document.body.appendChild(contenedorProductos);
 }
 
 mostrarProductos(productosDisponibles);

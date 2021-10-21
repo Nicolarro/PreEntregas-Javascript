@@ -58,20 +58,27 @@ class Producto {
 
          /* FUNCION QUE GUARDA LOS DATOS INGRESADOS POR EL USUARIO */
 
+         let nombre_producto;
+         let tipo_productos;
+
          const guardarDato = () =>{
 
             let nombre_producto = document.getElementById("nombre").value
+            console.log(nombre_producto)
             
             let tipo_productos = document.getElementById("tipo").value
+            console.log(nombre_producto)
         
             const boton = document.getElementById("save")
+
+         }
             
-    
-            document.getElementById("save").addEventListener("click", (e) => {
-                e.preventDefault(), guardarDato()})
-            }
+
+            document.getElementById("save").addEventListener("click",(e) => {
+              guardarDato()},e.preventDefault(),muestraCosto())
+         
         
-            console.log(guardarDato());
+            console.log(guardarDato())
 
 
     /* USUARIO FILTRA POR LOS PRODUCTOS A COMPRAR  */
@@ -79,55 +86,48 @@ class Producto {
       /* SE TOMA LOS DATOS BRINDADOS POR EN EL INPUT, Y SE CREA ARRAY DE LOS PRODUCTOS FILTRADOS "LISTADO PRODUCTOS" */
 
     let listadoProducto = [];
+
+    let eleccion = [];
     
     function lista_filtrada(){
 
     if (listadoProducto != "") {
         listadoProducto = []
       let listaVacia = createElement("p");
-      listaVacia.innerHTML = "<p> La busqueda no coincide con ningun producto</p>";
-      document.body.appendChild(listaVacia)
-
+             listaVacia.innerHTML = "<p> La busqueda no coincide con ningun producto</p>";
+             document.body.appendChild(listaVacia)
     }
-
     else{
 
-    listadoProducto = ""
-/*     let nombre_producto = document.getElementById("nombre").value
+    listadoProducto = []
+    let nombre_producto = document.getElementById("nombre").value
 
-    let tipo_productos = document.getElementById("tipo").value */
-
-    guardarDato()
+    let tipo_productos = document.getElementById("tipo").value
 
     /* SE CREE UN ARRAY CON LOS PRODUCTOS FILTRADOS POR EL USUARIO */
     
-     const eleccion = productos.filter((item) => (item.nombre == nombre_producto) && (item.tipo == tipo_productos));
+     const eleccion = productos.filter((productos) => (productos.nombre == nombre_producto) && (productos.tipo == tipo_productos));
+     console.log(eleccion)
 
         /* A SU VEZ GUARDA LOS PRODUCTOS ELEGIDOS EN ARRAY LISTADO PRODUCTOS*/
 
-     listadoProducto.push(...eleccion);
+     listadoProducto.push(eleccion);
+
      console.log(eleccion)
 
     }
 }
- 
-    console.log(listadoProducto)
-
-    lista_filtrada();
 
 
 
-    const listado = lista_filtrada();
-    
-    console.log(listado);
 
     /* QUE SE IMPRIMAN EN EL MISMO INDEX. HTML LOS PRODUCTOS FILTRADOS POR EL USUARIO */
 
-    let contenedorIndex = document.getElementById("produtosFiltrado")
+    let contenedorIndex = document.getElementById("productosFiltrados")
 
     function filtrar_productos(){
-    listadoProducto.forEach(listadoProducto => {
-        contenedorProductos.innerHTML += 
+       listadoProducto.forEach(listadoProducto => {
+            contenedorProductos.innerHTML += 
             `<div class="container-fluid">
               <div class="row containerFlex">
                 <div class="col-sm-4">
@@ -147,7 +147,7 @@ class Producto {
         })
 
         filtrado = contenedorIndex.innerHTML
-        document.body.appendChild(contenedorIndex);
+
     }
 
 
@@ -158,25 +158,29 @@ class Producto {
         let costo_total;
     
         function monto() {
-        let suma = 0;
-        listado.forEach((item) => {
-        suma += item.precio;
-        });
-        return suma;
+            let suma = 0;
+            listadoProducto.forEach((item) => {
+            suma += item.precio});
+            return suma;
         }
         
         let total = monto()
+
         /* SE IMPRIME CON UN INNER HTML EL MONTO TOTAL DE LA OPERACION */
 
         function muestraCosto() {
     
             let contenedor = document.createElement("div")
 
-            contenedor.innerHTML = `<h4> Costo Total: ${total}</h4>`;
-            document.body.appendChild(contenedor)
+                  contenedor.innerHTML = `
+                                    <br>
+                                    <br>
+                                    <h4> El costo  Total de tu compra es : ${total}</h4>`;
+                  document.body.appendChild(contenedor)
         }
 
         console.log(muestraCosto());
-        muestraCosto();
+
+      
 
  
