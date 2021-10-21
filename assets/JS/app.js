@@ -77,6 +77,7 @@ for (const producto of productos) {
 /*------------------------------------------------- SIMULADOR ------------------------------------------------------------------------- */ /* -----CALCULAR EL COSTO TOTAL DE LOS PRODUCTOS SELECCIONADOS (PRECIO POR CANTIDAD DEL PRODUCTO), Y MOSTRARLO AL USUARIO--------- */
 
 /* FUNCION QUE GUARDA LOS DATOS INGRESADOS POR EL USUARIO */
+let listadoProducto = [];
 
 let nombre_producto;
 let tipo_productos;
@@ -99,7 +100,7 @@ document.getElementById("save").addEventListener("click", (e) => {
 
 /* SE TOMA LOS DATOS BRINDADOS POR EN EL INPUT, Y SE CREA ARRAY DE LOS PRODUCTOS FILTRADOS "LISTADO PRODUCTOS" */
 
-let listadoProducto = [];
+
 
 let eleccion = [];
 
@@ -122,6 +123,8 @@ function busqueda_productos() {
   return listadoProducto
 }
 
+busqueda_productos();
+
 console.log(eleccion);
 console.log(listadoProducto);
 
@@ -129,9 +132,11 @@ console.log(listadoProducto);
 
 let contenedorIndex = document.getElementById("productosFiltrados");
 
+let listaVacia;
+
 function filtrar_productos(listado_productos) {
   if (listadoProducto == []) {
-    let listaVacia = createElement("p");
+    listaVacia = createElement("p");
     listaVacia.innerHTML = `<p> La busqueda no coincide con ningun producto</p>`;
     document.body.appendChild(listaVacia);
   } else {
@@ -157,4 +162,5 @@ function filtrar_productos(listado_productos) {
   });
   filtrado = contenedorIndex.innerHTML;
 }
+
 console.log(listadoProducto)
