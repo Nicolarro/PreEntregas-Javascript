@@ -26,7 +26,7 @@ const mostrarProductos = (productosDisponibles) => {
               <div class="card-body">
                 <h5 class="card-title">"Nombre: "${productosDisponibles.nombre}</h5>
                 <p>"Precio: " ${productosDisponibles.precio}</p>
-                <p class="card-text">Armamos todo tipo de bocados para las mejores entradas</p>
+                <p class="card-text">Armamos todo tipo de productos personalizados con los mejores ingredientes</p>
                 <a href="#" class="btn btn-primary btnCards" onclick= comprarProducto()> COMPRAR</a>
               </div>
             </div>

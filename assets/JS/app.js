@@ -2,12 +2,13 @@
 
 /* CLASE PRODUCTOS CREADA */
 class Producto {
-  constructor(nombre, categoria, precio, stock, imagen) {
+  constructor(id,nombre, categoria, precio, stock, imagen) {
+    this.id = id;
     this.nombre = nombre;
     this.categoria = categoria;
     this.precio = parseFloat(precio);
     this.stock = stock;
-    this.imgUrl = imagen;
+    this.imagen = imagen;
   }
   sumaIva() {
     this.precio = this.precio * 1.21;
@@ -26,6 +27,7 @@ const crearProducto = (nombre, categoria, precio, stock, imagen) => {
 /* PRODUCTO */
 
 const torta = new Producto(
+  1,
   "torta",
   "dulce",
   1200,
@@ -33,6 +35,7 @@ const torta = new Producto(
   "https://i.ibb.co/qrDrn0H/Torta-1.jpg"
 );
 const bocados = new Producto(
+  2,
   "bocados",
   "salados",
   200,
@@ -40,6 +43,7 @@ const bocados = new Producto(
   "https://i.ibb.co/ZGSygjC/Bocados-1-1.jpg"
 );
 const tarta = new Producto(
+  3,
   "tarta",
   "dulce",
   500,
@@ -47,6 +51,7 @@ const tarta = new Producto(
   "https://i.ibb.co/LDKgysR/Tartas-1.jpg"
 );
 const shots = new Producto(
+  4,
   "shots",
   "dulce",
   500,
@@ -125,6 +130,7 @@ function busqueda_productos() {
 
   return listadoProducto
 }
+
 
 busqueda_productos();
 
