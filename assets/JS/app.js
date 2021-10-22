@@ -7,7 +7,7 @@ class Producto {
     this.categoria = categoria;
     this.precio = parseFloat(precio);
     this.stock = stock;
-    this.imagen = imagen;
+    this.imgUrl = imagen;
   }
   sumaIva() {
     this.precio = this.precio * 1.21;
