@@ -8,7 +8,7 @@ class Producto {
       this.categoria = categoria;
       this.precio = parseFloat(precio);
       this.stock = stock;
-      this.imagen = img.source;
+      this.imagen = imagen;
     }
     sumaIva() {
       this.precio = this.precio * 1.21;
@@ -32,7 +32,7 @@ class Producto {
     "dulce",
     1200,
     50,
-    "PreEntregas\assets\Images\Torta (1).jpg"
+    "https://i.ibb.co/qrDrn0H/Torta-1.jpg"
   );
   const bocados = new Producto(
     2,
@@ -158,7 +158,7 @@ class Producto {
       contenedorIndex.innerHTML += `
                   <div class="col-12">
                     <div class="card containerflex--estilocaja">
-                      <h2>Su Busqueda</h2>
+                      <h2>Producto Seleccionado</h2>
                       <img src="${listadoProducto.image}" alt="" width="px" height="px">
                       <div class="card-body">
                         <h5 class="card-title">"Nombre: "${listadoProducto.nombre}</h5>
@@ -193,7 +193,7 @@ class Producto {
                 <div class="card-body">
                   <h5 class="card-title">"Nombre: "${productosDisponibles.nombre}</h5>
                   <p>"Precio: " ${productosDisponibles.precio}</p>
-                  <p class="card-text">Armamos todo tipo de bocados para las mejores entradas</p>
+                  <p class="card-text">Armamos todo tipo de productos personalizados</p>
                   <a href="#" class="btn btn-primary btnCards" onclick= comprarProducto()> COMPRAR</a>
                 </div>
               </div>
