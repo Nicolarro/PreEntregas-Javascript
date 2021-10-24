@@ -69,14 +69,24 @@
 
     <form action="" method="post">
       <label for="nombre">Ingrese el nombre del Producto</label>
-      <input type="text" id="nombre" placeholder="Ingresar el nombre">
+<!--       <input type="text" id="nombre" placeholder="Ingresar el nombre"> -->
+      <select name="nombre" id="nombre">
+        <option value="torta">Torta</option>
+        <option value="bocados">Bocados</option>
+        <option value="tarta">Tarta</option>
+        <option value="shots">Shots</option>
+      </select>
   
       <br>
       <br>
       <br>
   
       <label for="tipo">Ingrese el tipo de producto a comprar</label>
-      <input type="text" id="tipo" placeholder="Ingrese el tipo" >
+<!--       <input type="text" id="tipo" placeholder="Ingrese el tipo" > -->
+      <select name="tipo" id="tipo">
+        <option value="dulce">Dulce</option>
+        <option value="salados">Salado</option>
+      </select>
   
       <br>
       <br>
@@ -87,11 +97,18 @@
   
   </form>
 
-    <div id="productosFiltrados"></div>
+    <div id="productosFiltrados">
+      <div class="container-fluid"></div>
+        <div class="row containerFlex"></div>
 
+    </div>
 
-    <div id="totalProductos"></div>
-
+    <div>
+      <div class="container-fluid">
+        <div id="totalProductos" class="row containerFlex">
+        </div>
+      </div>
+    </div>
 
 
 <script src="./assets/JS/app.js"></script>

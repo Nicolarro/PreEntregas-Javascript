@@ -22,6 +22,13 @@ const agregarCliente =  () =>{
     comentarios : document.getElementById("comentarios").value,
 
     })
-
-    let baseCliente = localStorage.setItem("cliente",agregarCliente());
+    const boton = document.getElementById("guardar")   
+    let baseCliente = localStorage.setItem("cliente",agregarCliente())
 }
+    document.getElementById("guardar").addEventListener("click", (e) => {
+        agregarCliente(), e.preventDefault()})
+
+
+
+
+    

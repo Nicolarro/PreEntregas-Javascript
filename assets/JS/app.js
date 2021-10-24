@@ -85,7 +85,7 @@ for (const producto of productos) {
 /*------------------------------------------------- SIMULADOR ------------------------------------------------------------------------- */ /* -----CALCULAR EL COSTO TOTAL DE LOS PRODUCTOS SELECCIONADOS (PRECIO POR CANTIDAD DEL PRODUCTO), Y MOSTRARLO AL USUARIO--------- */
 
 /* FUNCION QUE GUARDA LOS DATOS INGRESADOS POR EL USUARIO */
-let listadoProducto = [];
+
 
 let nombre_producto;
 let tipo_productos;
@@ -96,12 +96,23 @@ const guardarDato = () => {
 
   let tipo_productos = document.getElementById("tipo").value;
   console.log(tipo_productos);
+}
 
   const boton = document.getElementById("save");
-};
 
-document.getElementById("save").addEventListener("click", (e) => {
-  guardarDato(), e.preventDefault(),filtrar_productos();
+/*   esto puedo usarlo para un campo de busqueda
+if(nombre_producto.length > 0 && tipo_productos.length > 0) {
+
+  document.getElementById("save").submit()
+}
+  else{
+    return false
+}
+ */
+
+
+boton.addEventListener("click", (e) => {
+  guardarDato(), e.preventDefault(), busqueda_productos(),filtrar_productos();
 });
 
 /* USUARIO FILTRA POR LOS PRODUCTOS A COMPRAR  */
@@ -109,6 +120,8 @@ document.getElementById("save").addEventListener("click", (e) => {
 /* SE TOMA LOS DATOS BRINDADOS POR EN EL INPUT, Y SE CREA ARRAY DE LOS PRODUCTOS FILTRADOS "LISTADO PRODUCTOS" */
 
 console.log(productos.nombre)
+
+let listadoProducto = [];
 
 let eleccion = [];
 
@@ -121,21 +134,15 @@ function busqueda_productos() {
 
   /* SE CREA UN ARRAY CON LOS PRODUCTOS FILTRADOS POR EL USUARIO */
 
-      const eleccion = productos.filter((productos) => productos.nombre == nombre_producto && productos.tipo == tipo_productos
-      );
+      /* A SU VEZ GUARDA LOS PRODUCTOS ELEGIDOS EN ARRAY LISTADO PRODUCTOS*/
 
-  /* A SU VEZ GUARDA LOS PRODUCTOS ELEGIDOS EN ARRAY LISTADO PRODUCTOS*/
+    const eleccion = productos.filter((productos) => productos.nombre == nombre_producto.value && productos.tipo == tipo_productos.value
+    );
 
-  listadoProducto.push(eleccion)
+    listadoProducto = eleccion
+    console.log(listadoProducto);
+  }
 
-  return listadoProducto
-}
-
-
-busqueda_productos();
-
-console.log(eleccion);
-console.log(listadoProducto);
 
 /* QUE SE IMPRIMAN EN EL MISMO INDEX. HTML LOS PRODUCTOS FILTRADOS POR EL USUARIO */
 
@@ -143,19 +150,20 @@ let contenedorIndex = document.getElementById("productosFiltrados");
 
 let listaVacia;
 
-function filtrar_productos(listado_productos) {
+function filtrar_productos() {
   if (listadoProducto == []){
     listaVacia = createElement("p");
     listaVacia.innerHTML = `<p> La busqueda no coincide con ningun producto</p>`;
     document.body.appendChild(listaVacia);
   } else {
-    localStorage.setItem("busqueda", JSON.stringify(listadoProducto));
+    sessionStorage.setItem("busqueda", JSON.stringify(listadoProducto))
+    contenedorIndex.innerHTML = "";
   }
 
   listadoProducto.forEach((listadoProducto) => {
-    contenedorIndex.innerHTML += `<div class="container-fluid">
-              <div class="row containerFlex">
-                <div class="col-sm-4">
+    contenedorIndex.innerHTML += `
+            <div class="col-12">
+            <h2>"Nombre: "Producto Seleccionado"</h2>
                   <div class="card containerflex--estilocaja">
                     <img src=""${listadoProducto.image} alt="" width="px" height="px">
                     <div class="card-body">
@@ -165,10 +173,8 @@ function filtrar_productos(listado_productos) {
                       <a href="#" class="btn btn-primary btnCards" onclick= comprarProducto()> COMPRAR</a>
                     </div>
                   </div>
-                </div>
-              </div>
-              </div>`;
-  });
+                </div>;`
+            });
   filtrado = contenedorIndex.innerHTML;
 }
 
@@ -187,9 +193,7 @@ const mostrarProductos = (productosIndex) => {
   
   productosDisponibles.forEach(productosDisponibles => {
   productosIndex.innerHTML += 
-      `<div class="container-fluid">
-        <div class="row containerFlex">
-          <div class="col-sm-4">
+      ` <div class="col-sm-4 my-3">
             <div class="card containerflex--estilocaja">
               <img src="${productosDisponibles.image}" alt="" width="px" height="px">
               <div class="card-body">
@@ -200,12 +204,10 @@ const mostrarProductos = (productosIndex) => {
               </div>
             </div>
           </div>
-        </div>
-        </div>`  
-        
+`  
   })
 
   resultado = productosIndex.innerHTML
 }
 
-mostrarProductos(productosIndex);
+mostrarProductos(productosIndex)

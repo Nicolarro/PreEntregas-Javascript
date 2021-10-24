@@ -49,24 +49,23 @@
         </div>
       </nav>
 
-      
-
       <section class="container-fluid">
+      <form action="post">
         <div class="row contacto">
             <div class=" col-md-3">
               <div class="form-group mb-3">
                 <label for="FormControlInput1" class="form-label">Nombre</label>
-                <input type="text" class="form-control form--color" id="nombre">
+                <input type="text" class="form-control form--color" id="nombre" required>
             </div>
             <div class="form-group mb-3">
               <label for="FormControlInput2" class="form-label">Apellido</label>
-              <input type="text" class="form-control form--color" id="apellido">
+              <input type="text" class="form-control form--color" id="apellido" required>
             </div>
   
                 <div class="form-group mb-3">
                     <label for="FormControlInput3" class="form-label">Email</label>
                     <input type="email" class="form-control form--color" id="email"
-                        placeholder="name@example.com">
+                        placeholder="name@example.com" required>
                 </div>
                 <div class="form-group col-mb-3">
                   <label for="tipoEvento">Tipo de Evento</label>
@@ -87,9 +86,10 @@
                   </label>
                 </div>
   
-              <button type="submit" class="btn mb-3">Enviar</button>
+              <button type="submit" class="btn mb-3" id="guardar">Enviar</button>
         </div>
         </div>
+      </form>
 </section>
 
 
