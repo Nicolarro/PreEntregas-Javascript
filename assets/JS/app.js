@@ -199,6 +199,7 @@ class Producto {
      $("mensaje").slideToogle("fast"),mostrarMensaje()
    })
 
+   console.log(mostrarMensaje())
 
   const mostrarProductos = (productosIndex) => {
   

@@ -475,6 +475,10 @@ ul.animado {
   }
 }
 
+.aviso {
+  display: none;
+}
+
 /* SECCION CON MIXIN */
 /* VARIABLES */
 /* MIXIN */
