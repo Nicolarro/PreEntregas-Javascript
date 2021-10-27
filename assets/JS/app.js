@@ -104,7 +104,7 @@ class Producto {
     guardarDato()
     e.preventDefault()
     busqueda_productos();
-    filtrar_productos();
+    filtrado_productos();
   });
   
   /* USUARIO FILTRA POR LOS PRODUCTOS A COMPRAR  */
@@ -133,8 +133,6 @@ class Producto {
   }
   
   
-  
-  
   console.log(eleccion);
   console.log(listadoProducto);
   
@@ -144,14 +142,14 @@ class Producto {
   
   let listaVacia;
   
-  function filtrar_productos() {
-    if (listadoProducto == []){
-      listaVacia = createElement("p");
+  function filtrado_productos() {
+    if (listadoProducto === [] || listadoProducto === null){
+      listaVacia = document.createElement("p");
       listaVacia.innerHTML = `<p> La busqueda no coincide con ningun producto</p>`;
       document.body.appendChild(listaVacia);
     } else {
       localStorage.setItem("busqueda", JSON.stringify(listadoProducto));
-      contenedorIndex.innerHTML = "";
+/*       contenedorIndex.innerHTML = ""; */
     }
   
     listadoProducto.forEach((listadoProducto) => {
@@ -164,14 +162,15 @@ class Producto {
                         <h5 class="card-title">"Nombre: "${listadoProducto.nombre}</h5>
                         <p>"Precio: " ${listadoProducto.precio}</p>
                         <p class="card-text">Armamos todo tipo de productos personalizados</p>
-                        <a href="#" class="btn btn-primary btnCards" onclick= comprarProducto()> COMPRAR</a>
+                        <button href="#" class="btn btn-primary btnCards"> COMPRAR</button>
                       </div>
                     </div>
                   </div>`;
     });
     filtrado = contenedorIndex.innerHTML;
   }
-  
+
+
   console.log(listadoProducto)
   
   /* IMPRIME TODOS LO PRODUCTOS DISPONIBLES EN EL INDEX */
@@ -179,8 +178,28 @@ class Producto {
   let productosIndex = document.getElementById("totalProductos");
   
   let productosDisponibles = JSON.parse(localStorage.getItem("catalogo"))
+
+  console.log(productosDisponibles)
   
   let result;
+
+
+  /* EVENTON APLICANDO JQUERY PARA QUE HAGA SLIDETOGGLE SOBRE EL BOTON "COMPRAR" DE LAS CARDS */
+
+   
+  mostrarMensaje = () =>{
+
+    $("mensaje").append(`<div>
+                                 <h5>El producto fue agregado al carrito</h5>
+                                 <button id = "boton"></button>
+                                 </div>`);
+  }
+   
+  $("boton").click(() =>{
+     $("mensaje").slideToogle("fast"),mostrarMensaje()
+   })
+
+
   const mostrarProductos = (productosIndex) => {
   
     let resultado = "";
@@ -194,7 +213,7 @@ class Producto {
                   <h5 class="card-title">"Nombre: "${productosDisponibles.nombre}</h5>
                   <p>"Precio: " ${productosDisponibles.precio}</p>
                   <p class="card-text">Armamos todo tipo de productos personalizados</p>
-                  <a href="#" class="btn btn-primary btnCards" onclick= comprarProducto()> COMPRAR</a>
+                  <button href="#" class="btn btn-primary btnCards" onclick= mostrarMensaje()> COMPRAR</button>
                 </div>
               </div>
             </div>`  
@@ -203,5 +222,11 @@ class Producto {
   
     resultado = productosIndex.innerHTML
   }
+
+
   
+
+
+
+
   mostrarProductos(productosIndex);
