@@ -183,6 +183,7 @@ class Producto {
   
   let result;
 
+  /* ---------------------------------------------JQUERY------------------------------------------------------ */
 
   /* EVENTON APLICANDO JQUERY PARA QUE HAGA SLIDETOGGLE SOBRE EL BOTON "COMPRAR" DE LAS CARDS */
 
@@ -195,11 +196,16 @@ class Producto {
                                  </div>`);
   }
    
-  $("boton").click(() =>{
+  $("boton").on("click",() =>{
      $("mensaje").slideToogle("fast"),mostrarMensaje()
    })
 
    console.log(mostrarMensaje())
+
+
+
+
+   /* ------------------------------------------------------------------------------------- */
 
   const mostrarProductos = (productosIndex) => {
   
