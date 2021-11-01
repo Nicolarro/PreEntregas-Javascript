@@ -55,19 +55,22 @@
 
       <h1>Home</h1>
 
+<!-- FOTO DE PORTADA -->
 
-
-    <section class="portada">
+<section class="portada">
 
       <!-- IMAGEN AGREGADA EN CSS -->
       <h1 class="portada__insignia">Pasion Por La Cocina</h1>
 
-    </section>
+</section>
 
     <br>
     <br>
 
-    <form action="" method="post">
+
+    <!-- FORMULARIO DE BUSQUEDA DE INFORMACION -->
+
+<form action="" method="post">
 
 <!--       <input type="text" class="search-input" placeholder="Ingrese producto" id=mySearch /> -->
 
@@ -75,7 +78,6 @@
       <br>
 
       <label for="nombre">Ingrese el nombre del Producto</label>
-<!--       <input type="text" id="nombre" placeholder="Ingresar el nombre"> -->
       <select name="nombre" id="nombre">
         <option selected value="torta"> Torta</option>
         <option value="bocados">Bocados</option>
@@ -88,7 +90,6 @@
       <br>
   
       <label for="tipo">Ingrese el tipo de producto a comprar</label>
-<!--       <input type="text" id="tipo" placeholder="Ingrese el tipo" > -->
       <select name="tipo" id="tipo">
         <option value="dulce">Dulce</option>
         <option value="salados">Salado</option>
@@ -98,22 +99,27 @@
       <br>
             
       <button type="submit" value="Save" id="save"> Enviar </button>
-  
 
-  </form>
+      <br>
+      <br>
+<!-- 
+        <input type="radio" id="borrarBusqueda" name="fav_language" value="HTML">
+        <label for="borrarBusqueda">Borrar busqueda</label><br> -->
 
-<!--   <form action="">
+</form>
 
-  <label for="customRange2" class="form-label">Precio</label>
-  <input type="range" class="form-range" min="500" max="2000" id="precio">
+<br>
 
-  </form> -->
+<input type="radio" id="borrarBusqueda" name="fav_language" value="HTML">
+<label for="borrarBusqueda">Borrar busqueda</label><br>
+
+<br>
 
 <!-- ESTRUCTURA PARA LOS PRODUCTOS FILTRADOS -->
 
     <div id="productosFiltrados">
       <div class="container-fluid">
-        <div class="row containerFlex">
+        <div class="row containerFlex" id="productosFiltrados">
         </div>
       </div>
     </div>
@@ -136,11 +142,74 @@
     </div>
      </div>
   </div>
+
+<!-- CARRITO DE COMPRA  -->
+
+<!-- HACER PEDIDO -->
+
+<div class="carrito">
+  <div class="container-fluid" class="row containerFlex" >
+      <div class id="claveCarrito">
+      </div>
+</div>
+</div>
+
+<div class="" id="carrito">
+  <h1>HAGA SU PEDIDO</h1>
+  <div class="form">
+    <div class=" container-fluid delivery">
+      <div class="row">
+        <div class="col-sm column-1">
+          Seleccione su Brebaje:
+        </div>
+        <div class="col-sm column-2">
+          <select name='producto' id="brebajes" onchange="agregarPrecio()"></select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm column-1">
+          Cantidad:
+        </div>
+        <div class="col-sm column-2">
+          <input type="text" id="cantidad" class="campoNumerico" onkeyup="calcularSubtotal()">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm column-1">
+          Precio:
+        </div>
+        <div class="col-sm column-2">
+          <input type="text" id="precio" class="campoNumerico" disabled>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm column-1">
+          Subtotal:
+        </div>
+        <div class="col-sm column-2">
+          <input type="text" id="subtotal" class="campoNumerico" disabled>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm column-1">
+        </div>
+        <div class="col-sm column-2">
+          <div class="error" id="error"></div>
+          <button class="agregar" onclick="agregarProducto()">AGREGAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
   
 <script src="./assets/JS/app.js"></script>
 
 
-<script src="assets/JS/jquery.js"></script>
+<!-- <script src="assets/JS/jquery.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </body>
 </html>
