@@ -313,6 +313,14 @@ h2 {
   opacity: 1;
 }
 
+.busqueda {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  text-align: left;
+  opacity: 1;
+}
+
 h3 {
   text-align: center;
   font-size: 3rem;
