@@ -219,9 +219,11 @@ carritoDeCompra.foreach(element => {
 </div>`;
 
 })
+
+compra = carritoDeCompra.push(seleccionUsuario)
 }
 
-for(let i = 0; i < seleccionUsuario.id; i++){
+for(let i = 0; i < seleccionUsuario.indexOf() ; i++){
   botonSeleccion[i].addEventListener('click', agregarCarrito)}
 
 /* TRAE EL ARRAY DE LISTADO PRODUCTO, CON LA SELECCION DEL USUARIO */
