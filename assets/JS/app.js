@@ -198,7 +198,7 @@ let listaVacia;
 
 let carritoDeCompra = [];
 
-const boton = document.getElementById("#botonComprar")
+const botonSeleccion = document.getElementById("#botonComprar")
 
 seleccionUsuario = JSON.parse(localStorage.getItem("busqueda"))
 
@@ -221,8 +221,8 @@ carritoDeCompra.foreach(element => {
 })
 }
 
-for(let i = 0; i < addToCartButtons; i++){
-  boton[i].addEventListener('click', agregarCarrito)}
+for(let i = 0; i < seleccionUsuario.id; i++){
+  botonSeleccion[i].addEventListener('click', agregarCarrito)}
 
 /* TRAE EL ARRAY DE LISTADO PRODUCTO, CON LA SELECCION DEL USUARIO */
 
