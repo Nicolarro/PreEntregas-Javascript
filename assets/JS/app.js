@@ -147,9 +147,6 @@ class Producto {
   let contenedorIndex = document.getElementById("productosFiltrados");
 
 
-  
-/* QUIERO QUE SI EL PRODUCTO BUSCADO ES DE OTRA CATEGORIA, TIRE LA ETIQUETA <P></P>  
-
 /* ----------------------------------------REVISAR LA PARTE DE ARRIBA--------------------------------------------------------------- */
 
 /* -------------LA FUNCION FILTRA PRODUCTOS E IMPRIME LA BUSQUEDA REALIZADA EN UNA CARD ---------------------------------*/
@@ -161,7 +158,11 @@ let listaVacia;
     let tipo_productos = document.getElementById("tipo");
     
     if (listadoProducto === [] || listadoProducto === null || (listadoProducto.tipo_productos !== productos.categoria)){
+
+            /* QUIERO QUE SI EL PRODUCTO BUSCADO ES DE OTRA CATEGORIA, TIRE LA ETIQUETA <P></P>  -- --------REVISAR-------*/
+
       listaVacia = document.createElement("p");
+
       listaVacia.innerHTML = `<p> La busqueda no coincide con ningun producto</p>`;
       document.body.appendChild(listaVacia);
     } else {
@@ -178,7 +179,7 @@ let listaVacia;
                         <h5 class="card-title">"Nombre: "${listadoProducto.nombre}</h5>
                         <p>"Precio: " ${listadoProducto.precio}</p>
                         <p class="card-text">Armamos todo tipo de productos personalizados</p>
-                        <button href="#" class="btn btn-primary btnCards" onclick ="agregarCarrito" > AGREGAR AL CARRITO </button>
+                        <button href="#" class="btn btn-primary btnCards" id="botonComprar" onclick ="agregarCarrito" > AGREGAR AL CARRITO </button>
                       </div>
                     </div>
                   </div>`;
@@ -194,35 +195,36 @@ let listaVacia;
 
 /* CARRITO DE COMPRA */
 
+
 let carritoDeCompra = [];
 
-/* TRAE EL ARRAY DE LISTADO PRODUCTO, CON LA SELECCION DEL USUARIO */
+const boton = document.getElementById("#botonComprar")
 
 seleccionUsuario = JSON.parse(localStorage.getItem("busqueda"))
 
 const agregarCarrito = () =>{
 
-let contenedorCarrito = document.getElementById("claveCarrito")
+carritoDeCompra.foreach(element => {
+  boton[i].innerHTML +=`
+  <div class="col-12">
+  <div class="card containerflex--estilocaja">
+    <h2>Producto Seleccionado</h2>
+    <img src="${seleccionUsuario[i].imagen}" alt="" width="300px" height="300px">
+    <div class="card-body">
+      <h5 class="card-title">"Nombre: "${seleccionUsuario[i].nombre}</h5>
+      <p>"Precio: " ${seleccionUsuario[i].precio}</p>
+      <p class="card-text">Armamos todo tipo de productos personalizados</p>
+    </div>
+  </div>
+</div>`;
 
-carritoDeCompra.push(seleccionUsuario)
+})
+}
 
-carritoDeCompra.innerHTML +=
+for(let i = 0; i < addToCartButtons; i++){
+  boton[i].addEventListener('click', agregarCarrito)}
 
-          `<div class="col-12">
-            <div class="card containerflex--estilocaja">
-            <h2>Producto Seleccionado</h2>
-            <img src="${seleccionUsuario.imagen}" alt="" width="px" height="px">
-             <div class="card-body">
-                <h5 class="card-title">"Nombre: "${seleccionUsuario.nombre}</h5>
-                <p>"Precio: " ${seleccionUsuario.precio}</p>
-                <p class="card-text">Armamos todo tipo de productos personalizados</p>
-                <button href="#" class="btn btn-primary btnCards" onclick ="agregarCarrito" > AGREGAR AL CARRITO </button>
-             </div>
-           </div>
-          </div>`
-
-};
-console.log(seleccionUsuario)
+/* TRAE EL ARRAY DE LISTADO PRODUCTO, CON LA SELECCION DEL USUARIO */
 
 
 /* FUNCION PARA CALCULAR EL COSTO TOTAL DE LA COMPRA */
@@ -241,9 +243,10 @@ const compraFinal = () => {
 
   console.log(seleccionUsuario)
 
-  /* --------------------------BORRAR LA BUSQUEDA REALIZADA POR EL USUARIO--------------------------------------- */
+  /* --------------------------BORRAR LA BUSQUEDA REALIZADA POR EL USUARIO---- REVISANDO----------------------------------- */
   
-
+    /* HAY QUE REVISARLO!!!!!!!!!! */
+  
 const borrado = document.getElementById("borrarBusqueda")
 
 const borrar = () => {
@@ -304,7 +307,7 @@ const mostrarProductos = (productosIndex) => {
                   <h5 class="card-title">"Nombre: "${productosDisponibles.nombre}</h5>
                   <p>"Precio: " ${productosDisponibles.precio}</p>
                   <p class="card-text">Armamos todo tipo de productos personalizados</p>
-                  <button href="#" class="btn btn-primary btnCards" onclick= mostrarMensaje()> COMPRAR</button>
+                  <button href="#" class="btn btn-primary btnCards" onclick= mostrarMensaje()> AGREGAR </button>
                 </div>
               </div>
             </div>`  
@@ -315,3 +318,7 @@ const mostrarProductos = (productosIndex) => {
   }
 
   mostrarProductos(productosIndex);
+
+
+
+
