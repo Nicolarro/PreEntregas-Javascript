@@ -1,0 +1,9 @@
+ {
+
+    "nombre" : "nombre",
+    "apellido" : "apellido",
+    "email": "email:" ,
+    "tipoEvento":  "tipoEvento",
+    "comentarios" : "comentarios" 
+
+}

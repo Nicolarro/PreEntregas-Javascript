@@ -18,7 +18,6 @@ const cliente = new Cliente({
     email: document.getElementById("email").value,
     tipoEvento : document.getElementById("tipoEvento").value,
     comentarios : document.getElementById("comentarios").value,
-
 })
 
 console.log(cliente)
@@ -47,6 +46,35 @@ const agregarCliente =  () =>{
 
  baseCliente = localStorage.setItem("cliente",agregarCliente())
 
+
+ $(document).ready(function(){
+
+
+    const url = "clientes.json"
+
+    $("body").prepend('<button id="clientes">MOSTRAR CLIENTES</button>');
+
+    $("#clientes").click(() => { 
+        $.getJSON(url/* infoUsuarios? */, function (respuesta, estado) {
+            if(estado === "success"){
+                console.log(respuesta)
+              let misDatos = respuesta;
+              for (const dato of misDatos) {
+                $("body").prepend(`<div>
+                                        <h3>${cliente.nombre}</h3>
+                                        <p> "Su respuesta ha sido registrada"</p>
+                                    </div>`)
+              }  
+            }
+            });
+        });
+
+ }
+ 
+ )
+
+/* FORMATO PARA ALERTA DE RESPUESTA */
+
  /* TOAST DE BOOTSTRAP */
 
 let toastTrigger = document.getElementById('liveToastBtn')
@@ -64,23 +92,4 @@ infoUsuarios = JSON.stringify(baseCliente)
 
 console.log(infoUsuarios)
 
-/*const URLJSON = "data/datos.json"
 
-$("body").prepend('<button id="clientes">MOSTRAR CLIENTES</button>');
-
-$("#clientes").click(() => { 
-$.getJSON(URLJSON, function (respuesta, estado) {
-    if(estado === "success"){
-      let misDatos = respuesta;
-      for (const dato of misDatos) {
-        $("body").prepend(`<div>
-                                <h3>${dato.name}</h3>
-                                <p> ${dato.email}</p>
-                            </div>`)
-      }  
-    }
-    });
-}); */
-
-
-    
