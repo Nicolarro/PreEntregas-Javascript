@@ -24,42 +24,43 @@ console.log(cliente)
 
 /* AJAX SOBRE FORMULARIO DE CONTACTO, PARA QUE TOME EL IMPUT Y LE AVISO EN MENSAJE QUE SE RECIBIO LA CONSULTA */
 
-let listaCliente;
 
 /* FUNCION QUE TOME LOS DATOS DE CONTACTO DEL USUARIO  Y LOS GUARDA EN BASE DE DATOS*/
 
+let listaCliente;
 
-const agregarCliente =  () =>{
+ const agregarCliente =  () =>{
 
-    let nombreCliente = cliente.nombre
-    let apellidoCliente = cliente.apellido
-    let emailCliente = cliente.email
-    let tipoEventoCliente = cliente.tipoEvento
-    let comentariosCliente = cliente.comentarios
-    let boton = document.getElementById("ToastBtn")  
-    
-    listaCliente = listaCliente.push(listaCliente)
-}
+    if (localStorage.getItem("listaCliente") != null) {
+        lista = JSON.parse(localStorage.getItem("listaCliente"))
+        listaCliente.push(cliente)
+        localStorage.setItem("listaCliente", JSON.stringify(listaCliente))
+} 
+
+return cliente
+}  
+console.log(listaCliente)
+
+let boton = document.getElementById("clientes")
 
     boton.addEventListener("click", (e) => {
         e.preventDefault(),agregarCliente() })
 
- baseCliente = localStorage.setItem("cliente",agregarCliente())
 
+    /* -------------------------------------------------------------- */
 
- $(document).ready(function(){
+    const url = "https://6185b88b23a2fe0017fff6e7.mockapi.io/usuarios"
 
+   let  mostrar = $("body").append('<button id="clientes">MOSTRAR CLIENTES</button>');
 
-    const url = "clientes.json"
+    console.log (mostrar)
 
-    $("body").prepend('<button id="clientes">MOSTRAR CLIENTES</button>');
-
-    $("#clientes").click(() => { 
-        $.getJSON(url/* infoUsuarios? */, function (respuesta, estado) {
+    $("#clientes").click((e) => { 
+        e.preventDefault(),$.post(url, cliente, function (respuesta, estado) {
             if(estado === "success"){
                 console.log(respuesta)
-              let misDatos = respuesta;
-              for (const dato of misDatos) {
+              let listaCliente = respuesta;
+              for (cliente of listaCliente) {
                 $("body").prepend(`<div>
                                         <h3>${cliente.nombre}</h3>
                                         <p> "Su respuesta ha sido registrada"</p>
@@ -69,15 +70,12 @@ const agregarCliente =  () =>{
             });
         });
 
- }
- 
- )
 
-/* FORMATO PARA ALERTA DE RESPUESTA */
+/* ELEMENTO DE BOOTSTRAP PARA ALERTA DE RESPUESTA */
 
  /* TOAST DE BOOTSTRAP */
 
-let toastTrigger = document.getElementById('liveToastBtn')
+/* let toastTrigger = document.getElementById('liveToastBtn')
 let  toastLiveExample = document.getElementById('liveToast')
         if (toastTrigger) {
             toastTrigger.addEventListener('click', function () {
@@ -86,10 +84,8 @@ let  toastLiveExample = document.getElementById('liveToast')
             toast.show()
   })
 }
+ */
 
 
-infoUsuarios = JSON.stringify(baseCliente)
-
-console.log(infoUsuarios)
 
 

@@ -45,7 +45,7 @@ class Producto {
   const tarta = new Producto(
     3,
     "tarta",
-    "dulce",
+    "salados",
     500,
     100,
     "https://i.ibb.co/LDKgysR/Tartas-1.jpg"
@@ -136,6 +136,7 @@ class Producto {
     listadoProducto = eleccion;
   }
   
+  busqueda_productos()
 
   console.log(eleccion);
   console.log(listadoProducto);
@@ -159,18 +160,23 @@ let listaVacia;
     
     if (listadoProducto === [] || listadoProducto === null || (listadoProducto.tipo_productos !== productos.categoria)){
 
-            /* QUIERO QUE SI EL PRODUCTO BUSCADO ES DE OTRA CATEGORIA, TIRE LA ETIQUETA <P></P>  -- --------REVISAR-------*/
+     /* QUIERO QUE SI EL PRODUCTO BUSCADO ES DE OTRA CATEGORIA, TIRE LA ETIQUETA <P></P>  -- --------REVISAR-------*/
 
       listaVacia = document.createElement("p");
 
       listaVacia.innerHTML = `<p> La busqueda no coincide con ningun producto</p>`;
       document.body.appendChild(listaVacia);
+
     } else {
       localStorage.setItem("busqueda", JSON.stringify(listadoProducto));
     }
-  
+    typeof(listadoProducto)
+    console.log(listaVacia)
+
+    contenedorIndex.innerHTML = ""
+    
     listadoProducto.forEach((listadoProducto) => {
-      contenedorIndex.innerHTML += `
+      contenedorIndex.innerHTML = ` 
                   <div class="col-12">
                     <div class="card containerflex--estilocaja">
                       <h2>Producto Seleccionado</h2>
@@ -185,27 +191,36 @@ let listaVacia;
                   </div>`;
     });
     filtrado = contenedorIndex.innerHTML;
-  }
 
+    console.log(filtrado)
+  }
 
 /* -----------------------------------------SECCION PARA EL CARRITO DE COMPRA. DESARROLLO DEL CARRITO------------------------------------------------- */
 
 /* LISTADO PRODUCTO ES LA VARIABLE QUE CONTIENE LA ELECCION DEL USUARIO */
-
 
 /* CARRITO DE COMPRA */
 
 
 let carritoDeCompra = [];
 
-const botonSeleccion = document.getElementById("#botonComprar")
-
 seleccionUsuario = JSON.parse(localStorage.getItem("busqueda"))
+
+console.log(seleccionUsuario)
+
+const botonSeleccion = document.getElementById("#mensaje") //VIENE DEL PRINT DE LISTADO PRODUCTOS
+
+console.log(botonSeleccion)
+
+/* HACER UN DIV PARA PONER EN EL INNER HTML. EN 
+AGREGAR AL LOCAL STORAGE CONSERVANDO LO QUE SE TENIA ANTES, Y FORMA PARA CONTAR LOS ITEMS REPETIDOS EN EL ARRAY
+OPCION 2) HACER UN FIND AL CARRITO SOBRE LO QUE SE TIENE EN EL CARRITO, PARA HACER CANTIDAD =+ 1*/
 
 const agregarCarrito = () =>{
 
+  /* ACA NO VA CARRITO DE COMPRA, VA UN UN DIV DEL HTML */
 carritoDeCompra.foreach(element => {
-  boton[i].innerHTML +=`
+  botonSeleccion.innerHTML +=`
   <div class="col-12">
   <div class="card containerflex--estilocaja">
     <h2>Producto Seleccionado</h2>
@@ -223,8 +238,25 @@ carritoDeCompra.foreach(element => {
 compra = carritoDeCompra.push(seleccionUsuario)
 }
 
+mostrarMensaje = () =>{
+
+  $("mensaje").append(`<div>
+                               <h5>El producto fue agregado al carrito</h5>
+                               <button id = "boton"></button>
+                               </div>`);
+}
+ 
+$("boton").on("click",() =>{
+   $("mensaje").slideToogle("fast",mostrarMensaje())
+ })
+
+ console.log(mostrarMensaje())
+
+/* HACER METODO SPLICE PARA DEVOLVER UN ARRAY NUEVO, ELIMINAR OBJETOS DE ARRAY,  */
+
+
 for(let i = 0; i < seleccionUsuario.indexOf() ; i++){
-  botonSeleccion[i].addEventListener('click', agregarCarrito)}
+  botonSeleccion[i].addEventListener('click', agregarCarrito())}
 
 /* TRAE EL ARRAY DE LISTADO PRODUCTO, CON LA SELECCION DEL USUARIO */
 
@@ -253,7 +285,10 @@ const borrado = document.getElementById("borrarBusqueda")
 
 const borrar = () => {
 
-/* FALTA ARMAR LA LOGICA CODIGO */
+listadoProducto = []
+
+/* FALTA ARMAR LA LOGICA CODIGO
+APARTE HAY QUE HACERLE UN VACIO AL ELEMENTO DEL HTML */
 }
 
 borrado.addEventListener("click", (e) => {
@@ -267,28 +302,12 @@ borrado.addEventListener("click", (e) => {
 
   /* EVENTO APLICANDO JQUERY PARA QUE HAGA SLIDETOGGLE SOBRE EL BOTON "COMPRAR" DE LAS CARDS */
 
-   
-  mostrarMensaje = () =>{
-
-    $("mensaje").append(`<div>
-                                 <h5>El producto fue agregado al carrito</h5>
-                                 <button id = "boton"></button>
-                                 </div>`);
-  }
-   
-  $("boton").on("click",() =>{
-     $("mensaje").slideToogle("fast"),mostrarMensaje()
-   })
-
-   console.log(mostrarMensaje())
-
 
 
    /* --------------------------  /* IMPRIME TODOS LO PRODUCTOS DISPONIBLES EN EL INDEX ---------------------------------------------------------- */
 
      
   let productosIndex = document.getElementById("totalProductos");
-
 
   let productosDisponibles = JSON.parse(localStorage.getItem("catalogo"))
 
