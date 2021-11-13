@@ -36,40 +36,46 @@ let listaCliente;
         listaCliente.push(cliente)
         localStorage.setItem("listaCliente", JSON.stringify(listaCliente))
 } 
+    listaCliente.push(cliente)
 
-return cliente
+return cliente //traer cliente o traer lista?
 }  
 console.log(listaCliente)
+console.log(cliente)
 
-let boton = document.getElementById("clientes")
+/* let boton = document.getElementById("clientes") */
 
-    boton.addEventListener("click", (e) => {
-        e.preventDefault(),agregarCliente() })
+/*     boton.addEventListener("click", (e) => {
+        e.preventDefault(),agregarCliente() }) */
 
 
     /* -------------------------------------------------------------- */
 
-    const url = "https://6185b88b23a2fe0017fff6e7.mockapi.io/usuarios"
+    /* 1-NO ME ESTA MOSTRANDO LA INFORMACOIN CORRECTA, ME MUESTRA DATOS FAKE
+     2- LUEGO SE PUEDE HACER QUE LA API DEVUELVA SOLO LA ULTIMA DATA SUBIDA? PARA EL MENSAJE DE ALERTA*/
+
+$(document).ready(function() {
+
+     const apiURL = "https://6185b88b23a2fe0017fff6e7.mockapi.io/usuarios"
 
    let  mostrar = $("body").append('<button id="clientes">MOSTRAR CLIENTES</button>');
 
-    console.log (mostrar)
+   console.log(listaCliente)
 
     $("#clientes").click((e) => { 
-        e.preventDefault(),$.post(url, cliente, function (respuesta, estado) {
-            if(estado === "success"){
-                console.log(respuesta)
-              let listaCliente = respuesta;
-              for (cliente of listaCliente) {
-                $("body").prepend(`<div>
-                                        <h3>${cliente.nombre}</h3>
+        e.preventDefault(),agregarCliente(),$.ajax({
+            method: "POST",
+            url:apiURL,
+            data:cliente, //esta bien que sea el objeto?
+            success: function (respuesta) {
+                $("body").append(`<div>
+                                        <h3>${listaCliente.nombre}</h3>
                                         <p> "Su respuesta ha sido registrada"</p>
-                                    </div>`)
+                                    </div>`);
               }  
-            }
             });
         });
-
+    })
 
 /* ELEMENTO DE BOOTSTRAP PARA ALERTA DE RESPUESTA */
 
