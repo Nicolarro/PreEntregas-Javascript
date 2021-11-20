@@ -22,23 +22,30 @@ const cliente = new Cliente({
 
 console.log(cliente)
 
+let listaCliente;
+
+ listaCliente= listaCliente.push(cliente)
+
+
+localStorage.setItem("clientes",JSON.stringify(listaCliente))
+
+/* -------------------------------------------USO DE AJAX------------------------------------------- */
 /* AJAX SOBRE FORMULARIO DE CONTACTO, PARA QUE TOME EL IMPUT Y LE AVISO EN MENSAJE QUE SE RECIBIO LA CONSULTA */
 
 
 /* FUNCION QUE TOME LOS DATOS DE CONTACTO DEL USUARIO  Y LOS GUARDA EN BASE DE DATOS*/
 
-let listaCliente;
-
  const agregarCliente =  () =>{
 
-    if (localStorage.getItem("listaCliente") != null) {
-        lista = JSON.parse(localStorage.getItem("listaCliente"))
-        listaCliente.push(cliente)
+    if (localStorage.getItem("clientes") != null) {
+       let lista = JSON.parse(localStorage.getItem("clientes"))
+        listaNueva.push(lista)
         localStorage.setItem("listaCliente", JSON.stringify(listaCliente))
-} 
+        } 
+
     listaCliente.push(cliente)
 
-return cliente //traer cliente o traer lista?
+return listaCliente//traer cliente o traer lista?
 }  
 console.log(listaCliente)
 console.log(cliente)
@@ -60,9 +67,10 @@ $(document).ready(function() {
 
    let  mostrar = $("body").append('<button id="clientes">MOSTRAR CLIENTES</button>');
 
+   
    console.log(listaCliente)
 
-    $("#clientes").click((e) => { 
+    $("#guardar").submit((e) => { 
         e.preventDefault(),agregarCliente(),$.ajax({
             method: "POST",
             url:apiURL,
