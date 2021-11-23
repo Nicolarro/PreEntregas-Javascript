@@ -487,6 +487,10 @@ ul.animado {
   display: none;
 }
 
+#botonEstilo {
+  size: 5cm;
+}
+
 /* SECCION CON MIXIN */
 /* VARIABLES */
 /* MIXIN */

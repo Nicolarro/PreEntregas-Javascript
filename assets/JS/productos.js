@@ -40,3 +40,31 @@ const mostrarProductos = (productosDisponibles) => {
 
 mostrarProductos(productosDisponibles);
 
+
+/* -----------------------------AJAX--------------------------------------- */
+/* TRAER LA COTIZACION DEL DOLAR PARA CONOCIMIENTO DEL USUARIO */
+
+const apiDolar = "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
+cajaDolar = document.getElementById("caja")
+
+setInterval(() =>{
+$.get(apiDolar, (dato, estado) => {
+
+   cajaDolar.innerHTML =""
+
+if(estado =="success"){
+
+    dato.forEach(element => {
+
+      cajaDolar.innerHTML +=
+      `
+        <div>
+            <div class="container-fluid">
+              <p> "La cotizacion del dolar al dia de hoy es: " ${element.casa.compra}</p>
+            </div>
+            </div>`
+        
+    });
+}
+})
+},3000)

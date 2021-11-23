@@ -17,8 +17,8 @@ class Producto {
 
 /* CREO FUNCION PARA CREAR PRODUCTOS */
 
-const crearProducto = (nombre, categoria, precio, stock, imagen) => {
-  const producto = new Producto(nombre, categoria, precio, stock, imagen);
+const crearProducto = (id,nombre, categoria, precio, stock, imagen) => {
+  const producto = new Producto(id,nombre, categoria, precio, stock, imagen);
 };
 
 /*-------------------------------------INSTANCIAS-----------------------------------------------------------------   */
@@ -109,15 +109,17 @@ let result;
 const mostrarProductos = (productosIndex) => {
   let resultado = "";
 
-  productosDisponibles.forEach((productosDisponibles) => {
+  productosDisponibles.forEach((element) => {
+    let index = productosDisponibles.indexOf(element);
+
     productosIndex.innerHTML += `<div class="col-sm-4 my-3">
                <div class="card containerflex--estilocaja">
-                 <img src=${productosDisponibles.imagen} alt="" width="px" height="px">
+                 <img src=${element.imagen} alt="" width="px" height="px">
                  <div class="card-body">
-                   <h5 class="card-title">"Nombre: "${productosDisponibles.nombre}</h5>
-                   <p>"Precio: " ${productosDisponibles.precio}</p>
+                   <h5 class="card-title">"Nombre: "${element.nombre}</h5>
+                   <p>"Precio: " ${element.precio}</p>
                    <p class="card-text">Armamos todo tipo de productos personalizados</p>
-                   <button href="#" class="btn btn-primary btnCards" onclick= mostrarMensaje()> AGREGAR </button>
+                   <button href="#" class="btn btn-primary btnCards botonComprar" onclick =comprar(${index})> AGREGAR AL CARRITO </button>
                  </div>
                </div>
              </div>`;
@@ -151,9 +153,6 @@ function busqueda_productos() {
   listadoProducto = eleccion;
 }
 
-console.log(eleccion);
-console.log(listadoProducto);
-
 /* -------------LA FUNCION "FILTRADO PRODUCTOS" FILTRA PRODUCTOS E IMPRIME LA BUSQUEDA REALIZADA EN UNA CARD ---------------------------------*/
 
 let listaVacia;
@@ -168,21 +167,19 @@ function filtrado_productos() {
   let nombre_producto = document.getElementById("nombre");
   let tipo_productos = document.getElementById("tipo");
 
-  if (
-    listadoProducto === [] ||
-    listadoProducto === null ||
-    tipo_productos.value !== productos.categoria
-  )
-   {
-    /*  EL PRODUCTO BUSCADO ES DE OTRA CATEGORIA, INDICA QUE EL PRODUCTO NO EXITE PARA ESA CATEGORIA/-*/
+  /*  SI LA CATEGORIA DEL PRODUCTO BUSCADO NO COINCIDE, INDICA QUE LA BUSQUEDA NO COINCIDE CON NINGUN PRODUCTO/-*/
 
+  if (
+    listadoProducto.length == 0 ||
+    tipo_productos.value !== productos.categoria
+  ) {
     listaVacia = document.createElement("p");
 
     listaVacia.innerHTML = `<p> La busqueda no coincide con ningun producto</p>`;
     document.body.appendChild(listaVacia);
   } else {
     localStorage.setItem("busqueda", JSON.stringify(listadoProducto)),
-    listaVacia.innerHTML = ""
+      (listaVacia.innerHTML = "");
   }
 
   console.log(listaVacia);
@@ -199,7 +196,7 @@ function filtrado_productos() {
                         <h5 class="card-title">"Nombre: "${listadoProducto.nombre}</h5>
                         <p>"Precio: " ${listadoProducto.precio}</p>
                         <p class="card-text">Armamos todo tipo de productos personalizados</p>
-                        <button href="#" class="btn btn-primary btnCards" id="botonComprar" onclick ="agregarCarrito" > AGREGAR AL CARRITO </button>
+                        <button href="#" class="btn btn-primary btnCards botonComprar"> DETALLE DEL PRODUCTO </button>
                       </div>
                     </div>
                   </div>`;
@@ -227,87 +224,85 @@ boton.addEventListener("click", (e) => {
 
 /* LISTADO PRODUCTO ES LA VARIABLE QUE CONTIENE LA ELECCION DEL USUARIO */
 
-/* CARRITO DE COMPRA */
+function agregarCarrito(evento) {
+  const botonComprar = document.querySelectorAll(".botonComprar"); //VIENE DEL PRINT DE LISTADO PRODUCTOS
+
+  botonComprar.forEach((elemento) => {
+    elemento.addEventListener("click", comprar(index));
+  });
+}
 
 let carritoDeCompra = [];
 
-seleccionUsuario = JSON.parse(localStorage.getItem("busqueda"));
+let carrito = document.getElementById("carrito");
 
-console.log(seleccionUsuario);
 
-const botonSeleccion = document.getElementById("#mensaje"); //VIENE DEL PRINT DE LISTADO PRODUCTOS
+const comprar = (index) => {
+  let carritoDeCompra;
+  if (localStorage.getItem("carrito") == null) {
+    carritoDeCompra = [];
+  } 
+  else 
+  {
+    carritoDeCompra = JSON.parse(localStorage.getItem("carrito"));
+  }
+  carritoDeCompra.push(productosDisponibles[index]);
+  localStorage.setItem("carrito", JSON.stringify(carritoDeCompra));
+  console.log(carritoDeCompra);
 
-/* EN 
-AGREGAR AL LOCAL STORAGE CONSERVANDO LO QUE SE TENIA ANTES, Y FORMA PARA CONTAR LOS ITEMS REPETIDOS EN EL ARRAY
-OPCION 2) HACER UN FIND AL CARRITO SOBRE LO QUE SE TIENE EN EL CARRITO, PARA HACER CANTIDAD =+ 1*/
-
-const agregarCarrito = () => {
-  /* ACA NO VA CARRITO DE COMPRA, VA UN UN DIV DEL HTML */
-  seleccionUsuario.foreach((element) => {
-    botonSeleccion.innerHTML += `
-  <div class="col-12">
-  <div class="card containerflex--estilocaja">
-    <h2>Producto Seleccionado</h2>
-    <img src="${seleccionUsuario.imagen}" alt="" width="300px" height="300px">
-    <div class="card-body">
-      <h5 class="card-title">"Nombre: "${seleccionUsuario.nombre}</h5>
-      <p>"Precio: " ${seleccionUsuario.precio}</p>
-      <p class="card-text">Armamos todo tipo de productos personalizados</p>
+  carritoDeCompra.forEach((element) => {
+    carrito.innerHTML += `
+    <div class="col-12">
+    <div class="card containerflex--estilocaja">
+      <h2>Carrito de Compras</h2>
+      <img src="${element.imagen}" alt="" width="300px" height="300px">
+      <div class="card-body">
+        <h5 class="card-title">"Nombre: "${element.nombre}</h5>
+        <p>"Precio: " ${element.precio}</p>
+      </div>
     </div>
-  </div>
-</div>`;
+  </div>`;
   });
-
-  compra = carritoDeCompra.push(seleccionUsuario);
 };
-
-/* ---------------------------------------------JQUERY------------------------------------------------------ */
-
-/* HAY QUE REVISARLO!!!!!!!!!! */
-
-/* EVENTO APLICANDO JQUERY PARA QUE HAGA SLIDETOGGLE SOBRE EL BOTON "COMPRAR" FILTRADO DE LAS CARDS */
-
-mostrarMensaje = () => {
-  $("#mensaje").append(`<div>
-                               <h5>El producto fue agregado al carrito</h5>
-                              </div>`);
-};
-
-/* "BOTON COMPRAR" VIENE DEL DIV QUE SE IMPRIME EN LISTADO PRODUCTOS */
-$("#botonComprar").click(() => {
-  $("#mensaje").slideToogle("fast"), mostrarMensaje();
-});
-
-console.log(mostrarMensaje());
-
-/*  ------------------------------------------------------------------------------------ */
-/* PARA CARRITO DE COMPRAS */
-
-/* HACER METODO SPLICE PARA DEVOLVER UN ARRAY NUEVO, ELIMINAR OBJETOS DE ARRAY,  */
-
-for (let i = 0; i < seleccionUsuario.indexOf(); i++) {
-  botonSeleccion[i].addEventListener("click", agregarCarrito());
-}
-
-/* TRAE EL ARRAY DE LISTADO PRODUCTO, CON LA SELECCION DEL USUARIO */
 
 /* FUNCION PARA CALCULAR EL COSTO TOTAL DE LA COMPRA */
 
+let montoFinal = document.getElementById("montoFinal");
+
 const compraFinal = () => {
+
+  let productosCompra = JSON.parse(localStorage.getItem("carrito"));
+  console.log(productosCompra)
   let monto = 0;
 
-  seleccionUsuario.forEach((e) => {
-    monto += e.precio;
-  });
+  console.log(productosCompra)
+
+  productosCompra.forEach((element) => {
+    monto += element.precio;
+ 
+  console.log(monto)
+})
+
+  montoFinal.innerHTML += `
+  <br>
+  <p>"Monto Total: Tu monto de compra es " ${monto} </p>`;
 
   console.log(monto);
+  
   localStorage.removeItem("carrito");
 };
 
-console.log(seleccionUsuario);
+let botonFinalizarCompra = document.getElementById("compraCarrito");
+
+botonFinalizarCompra.addEventListener("click", (e) =>{
+compraFinal()
+});
+
+console.log(carritoDeCompra);
+
+
 
 /* --------------------------BORRAR LA BUSQUEDA REALIZADA POR EL USUARIO------------------------------------ */
-
 
 /* FALTA VER QUE NO REPITA LOS PRODUCTOS */
 
@@ -315,13 +310,13 @@ const borrado = document.getElementById("borrarBusqueda");
 
 const borrarBusqueda = () => {
   if (borrado.checked) {
-    mostrarProductos(productosIndex),contenedorIndex.innerHTML="",listaVacia.innerHTML=""
+    mostrarProductos(productosIndex),
+      (contenedorIndex.innerHTML = ""),
+      (listaVacia.innerHTML = "");
   }
 };
 
 listadoProducto = [];
-
-/*  HAY QUE HACERLE UN VACIO AL ELEMENTO DEL HTML -->YA HECHO EN FORMULAS, POR QUE NO ME DA? */
 
 borrado.addEventListener("click", (e) => {
   borrarBusqueda();

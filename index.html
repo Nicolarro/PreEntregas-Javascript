@@ -98,7 +98,7 @@
       <br>
       <br>
             
-      <button type="submit" value="Save" id="save"> Enviar </button>
+      <button type="submit" value="Save" id="save"> Buscar </button>
 
       <br>
       <br>
@@ -108,8 +108,9 @@
 <br>
 
 <input type="radio" id="borrarBusqueda" name="fav_language" value="HTML">
-<label for="borrarBusqueda">Borrar busqueda</label><br>
+<label for="borrarBusqueda">Borrar busqueda</label>
 
+<br>
 <br>
 
 <!-- ESTRUCTURA PARA LOS PRODUCTOS FILTRADOS -->
@@ -131,78 +132,20 @@
     </div>
 
 
-    <!-- CONTENEDOR PARA JQUERY -->
+    <!-- CONTENEDOR PARA CARRITO  -->
 
-  <div class="aviso">
+  <div id="carrito">
       <div class="container-fluid" class="row containerFlex" >
-    <div id= mensaje >
-    </div>
+        <div>
+        </div>
      </div>
   </div>
 
+  <button id="compraCarrito" class="botonEstilo"> Finalizar Compra</button>
+
+<div id="montoFinal">
+</div>
   
-<!-- CARRITO DE COMPRA  -->
-
-<!-- HACER PEDIDO -->
-
-<!-- <div class="carrito">
-  <div class="container-fluid" class="row containerFlex" >
-      <div class id="claveCarrito">
-      </div>
-</div>
-</div>
- -->
-
-     <!-- FORMULARIO PARA CARRITO DE COMPRA -->
-
-<!-- <h1>FINALIZAR COMPRA</h1>
-
-<div class="row containerFlex" id="carrito">
-  <div class="">
-    <div class=" container-fluid">
-      <div class="row">
-        <div class="col-sm-4 my-3">
-          Seleccionar el Producto:
-        </div>
-        <div class="col-sm-4 my-3">
-          <select name='producto' id="" onchange=""></select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 my-3">
-          Cantidad:
-        </div>
-        <div class="col-sm-4 my-3">
-          <input type="text" id="cantidad" class="campoNumerico" onkeyup="">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 my-3">
-          Precio:
-        </div>
-        <div class="col-sm-4 my-3">
-          <input type="text" id="precio" class="campoNumerico" disabled>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 my-3">
-          Subtotal:
-        </div>
-        <div class="col-sm-4 my-3">
-          <input type="text" id="subtotal" class="campoNumerico" disabled>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 my-3">
-        </div>
-        <div class="col-sm-4 my-3">
-          <div class="error" id="error"></div>
-          <button class="agregar" onclick="">AGREGAR</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 
 <script src="./assets/JS/app.js"></script>
