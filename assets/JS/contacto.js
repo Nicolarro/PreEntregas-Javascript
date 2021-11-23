@@ -20,14 +20,8 @@ const cliente = new Cliente({
   comentarios: document.getElementById("comentarios").value,
 });
 
-let baseCliente = localStorage.setItem("cliente",JSON.stringify(cliente));
-
-console.log(baseCliente)
-
-let listaCliente = [];
 
 
-localStorage.setItem("clientes", JSON.stringify(listaCliente));
 
 
 
@@ -56,5 +50,3 @@ $("#cambiarFondo").on("click", () => {
     darkMode();
   }
 });
-
-
