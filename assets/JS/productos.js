@@ -60,6 +60,7 @@ if(estado =="success"){
       `
         <div>
             <div class="container-fluid">
+            <p> "Tipo de Camio " ${element.casa.nombre}</p>   
               <p> "La cotizacion del dolar al dia de hoy es: " ${element.casa.compra}</p>
             </div>
             </div>`
